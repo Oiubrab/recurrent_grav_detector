@@ -8,6 +8,7 @@ hole coalescences in the training and testing data sets. Here, the black holes w
 regard to the hypothetical interferometer. In order to generate the data and train the network, cd into the src directory and 
 execute:
 
+
   Usage: python scavenger_of_black_hole_signals_seven_combine_non_overlapping_sets_with_glitch_distinguish.py <Data_ID>
   where Data_ID is ten numbers and three instructions
   correspinding: 
@@ -28,9 +29,12 @@ execute:
 
   Example: python scavenger_of_black_hole_signals_seven_combine_non_overlapping_sets_with_glitch_distinguish.py 100 100 750 200 50 50 750 200 100 10 integer half yes
 
+
 running: 
 
+
   python scavenger_of_black_hole_signals_seven_combine_non_overlapping_sets_with_glitch_distinguish.py
+
 
 will printout the above instructions to the terminal. The result of the generation and train stage will be a json file 
 containing the model and a h5 file containing the weights of the trained network, saved in a folder,
@@ -42,12 +46,16 @@ Bash scripts in the test folder will generate automated test runs of the program
 to a local Documents folder under 'experiment_recurrent_gravitational'. In order to run these, cd into the test directory
 and run:
 
+
   chmod u+x data_load_dense_data_range
   ./data_load_dense_data_range
 
+
 for a range of tests over different training/testing set sizes, or:
+
 
   chmod u+x data_load_dense_lum_range
   ./data_load_dense_lum_range
+
 
 for a range of tests over a luminosity distance range.
