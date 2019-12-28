@@ -1,0 +1,95 @@
+#!/bin/bash
+
+#choose your glitch method
+king=scavenger_of_black_hole_signals_seven_combine_non_overlapping_sets_with_glitch_distinguish
+
+# fire the gun
+gun=/fire
+#this is the final argument of kings
+louis=/ultima_ratio_regum
+#change this folder to a general name for each collection of runs
+progress=/lum_100_to_
+#change this path to a general example of the folder for the experiment
+kingdom=~/Documents/experiment_recurrent_gravitational
+
+#runhole2fast2furious takes the scavenger combine code and runs it as many times as is defined, putting the results in a run_x folder, where x is the most recent model calibration 
+runhole2fast2furious () {
+	cannonade=$(pwd) 
+	#here, define the number of runs for each data set 
+	for x in {1..6}
+	do
+
+		#define totals for results and inferences printout
+		total_train=$(($1+$2))
+		total_test=$(($5+$6))
+		#run the generator/trainer/inference and save the results to a text file
+		#change last arg for a printout of the data and the 2nd last arg for testing set generation type
+		cd src
+		python $king.py $1 $2 $3 $4 $5 $6 $7 $8 100 10 integer half no > results_${total_train}_${total_test}
+		cd ..
+		#move everything into the run folder
+		cp -r $cannonade $9/run_$x 
+	done
+	
+}
+
+#delete previous global result
+if [ -e ../recurrent_grav_sim_data/luminosityDistance_snr_accuracy_sensitivity_FAR ]
+then
+	rm ../recurrent_grav_sim_data/luminosityDistance_snr_accuracy_sensitivity_FAR
+elif [ -e ../recurrent_grav_sim_data/luminosityDistance_accuracy_sensitivity_FAR ]
+then
+	rm ../recurrent_grav_sim_data/luminosityDistance_accuracy_sensitivity_FAR
+fi
+
+#define number of noise and signal+noise data sets for the test and train generation rounds
+train_noise=5000
+train_signal=5000
+test_noise=5000
+test_signal=5000
+
+#make a directory for the experiment, copy the contents of the current folder into it, then cd into it
+cd ..
+home=$(pwd)
+mkdir -p $kingdom
+sun=$kingdom$louis
+cp -r $home $sun
+cd $sun
+
+#this loop runs the entire experiment over an incremented parameter and puts the result in the pre-determined pth3 path with an extension that is defined by that parameter
+
+#change the range (first two numbers) here to determine the domain to increment the parameter through
+#change the step size (last number) to represent the spacing between parameters
+for i in {4000..10000..1000}
+do
+	#set variables here that determine the scope of the experiment
+	
+	#make a folder for the runs at one incremented parameter
+	revolution=$kingdom$progress$i
+	mkdir -p $revolution
+	
+	#copy the final argument of kings into the gun and fire
+	fire=$revolution$gun
+	cp -r $sun $fire
+	cd $fire
+	
+	#run at one incremented parameter
+	runhole2fast2furious $train_noise $train_signal $i 100 $test_signal $test_noise $i 100 $revolution
+	
+	#move the global record into the final argument of kings
+	if [ -e luminosityDistance_snr_accuracy_sensitivity_FAR ]
+	then
+		cp luminosityDistance_snr_accuracy_sensitivity_FAR $sun
+	elif [ -e luminosityDistance_accuracy_sensitivity_FAR ]
+	then
+		cp luminosityDistance_accuracy_sensitivity_FAR $sun
+	fi
+	
+	#finish firing
+	cd $sun
+	rm -r $fire
+done
+
+#remove the final argument of kings and return user to original command directory
+cd $home
+rm -r $sun
