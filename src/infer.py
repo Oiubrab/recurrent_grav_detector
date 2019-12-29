@@ -22,9 +22,8 @@ if (no_arg == 2):
 	ID = int(sys.argv[1])
 else:
 	print("Usage: python infer.py <Data_ID>")
-	print("where Data_ID is a number.")
+	print("where Data_ID is the ID number of the 1s noise profile requested")
 	print("Example: python infer.py 2")
-	print("  -- will load X_2.dat and infer its class")
 	sys.exit()
 
 print("Loading file = " + str(ID))
