@@ -1,5 +1,5 @@
 # infer.py
-# Written by Dr. Matthew Smith, Swinburne University of Technology
+# Written by Dr. Matthew Smith - editid by Adrian Barbuio, Swinburne University of Technology
 # Load a precomputed keras model and its weights for a single inference
 # USAGE: python infer.py ID where ID is the ID of the training file
 # we wish to load.
