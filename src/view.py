@@ -1,5 +1,5 @@
 # view.py
-# Written by Dr. Matthew Smith, Swinburne University of Technology
+# Written by Dr. Matthew Smith - editid by Adrian Barbuio, Swinburne University of Technology
 # Load a single data set and plot using matplotlib
 # This assumes you have X11 forwarded if you are running remotely.
 # Mac O/S users will need XQuartz installed and running.
